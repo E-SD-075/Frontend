@@ -7,12 +7,26 @@
 		<!-- <link rel="stylesheet" href="styles.css" /> -->
 		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 		<style type="text/tailwindcss">
+			@layer base {
+				h3 {
+					@apply font-bold text-xl;
+				}
+			}
+
 			@layer components {
+				/* can either use @apply to use Tailwind classes, or vanilla CSS */
 				.service {
 					@apply flex w-full gap-4;
 					img {
-						width: 4rem;
-						height: 4rem;
+						@apply w-12 h-12;
+					}
+					div {
+						display: flex;
+						flex-direction: column;
+						gap: 0.5rem;
+						a {
+							color: #4c5fd5;
+						}
 					}
 				}
 			}
@@ -88,11 +102,17 @@
 			</nav>
 		</header>
 		<main>
-			<section class="hero">
-				<h2>How can we help?</h2>
-				<input type="search" />
+			<section
+				class="bg-[#dadbf1] h-[33vh] flex flex-col justify-center items-center gap-8"
+			>
+				<h2 class="text-6xl">How can we help?</h2>
+				<input
+					type="search"
+					placeholder="Search"
+					class="bg-white border-1 border-black w-1/2 p-2"
+				/>
 			</section>
-			<section id="services">
+			<section id="services" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-20">
 				<div class="service">
 					<img src="./images/using-abstract.png" alt="" />
 					<div class="service-text">
@@ -156,42 +176,51 @@
 				</div>
 			</section>
 		</main>
-		<footer>
-			<div class="footer-nav">
-				<h3>Abstract</h3>
+		<footer
+			class="bg-black text-white flex flex-col md:flex-row justify-around gap-8 p-8 min-h-[33vh]"
+		>
+			<nav>
+				<h3 class="font-semibold text-xl">Abstract</h3>
 				<ul>
-					<li><a href="">Dummy Text</a></li>
-					<li><a href="">Dummy Text</a></li>
-					<li><a href="">Dummy Text</a></li>
+					<li>Start trial</li>
+					<li>Pricing</li>
+					<li>Download</li>
 				</ul>
-			</div>
-			<div class="footer-nav">
-				<h3>Resources</h3>
+			</nav>
+			<nav>
+				<h3 class="font-semibold text-xl">Resources</h3>
 				<ul>
-					<li><a href="">Dummy Text</a></li>
-					<li><a href="">Dummy Text</a></li>
-					<li><a href="">Dummy Text</a></li>
+					<li>Blog</li>
+					<li>Help Center</li>
+					<li>Release Notes</li>
+					<li>Status</li>
 				</ul>
-			</div>
-			<div class="footer-nav">
-				<h3>Community</h3>
+			</nav>
+			<nav>
+				<h3 class="font-semibold text-xl">Community</h3>
 				<ul>
-					<li><a href="">Dummy Text</a></li>
-					<li><a href="">Dummy Text</a></li>
-					<li><a href="">Dummy Text</a></li>
+					<li>Twitter</li>
+					<li>LinkedIn</li>
+					<li>Facebook</li>
+					<li>Dribble</li>
+					<li>Podcast</li>
 				</ul>
-			</div>
-			<div class="footer-nav">
-				<h3>Company</h3>
+			</nav>
+			<nav>
+				<h3 class="font-semibold text-xl">Company</h3>
 				<ul>
-					<li><a href="">Dummy Text</a></li>
-					<li><a href="">Dummy Text</a></li>
-					<li><a href="">Dummy Text</a></li>
+					<li>About Us</li>
+					<li>Careers</li>
+					<li>Legal</li>
+					<li>
+						<h4>Contact Us</h4>
+						<p>info@abstract.com</p>
+					</li>
 				</ul>
-			</div>
-			<div class="footer-end">
+			</nav>
+			<div class="self-end">
 				<svg
-					class="abstract-logo-footer"
+					class="h-8"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 200 51"
 					preserveAspectRatio="xMinYMid slice"
