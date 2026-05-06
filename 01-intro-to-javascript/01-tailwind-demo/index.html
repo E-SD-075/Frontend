@@ -4,14 +4,28 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Abstract</title>
-		<link rel="stylesheet" href="styles.css" />
+		<!-- <link rel="stylesheet" href="styles.css" /> -->
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<style type="text/tailwindcss">
+			@layer components {
+				.service {
+					@apply flex w-full gap-4;
+					img {
+						width: 4rem;
+						height: 4rem;
+					}
+				}
+			}
+		</style>
 	</head>
 	<body>
-		<header>
-			<nav class="nav-start">
+		<header
+			class="bg-black text-white flex justify-between items-center py-4 px-12"
+		>
+			<nav class="flex items-center gap-2">
 				<a href="index.html">
 					<svg
-						class="abstract-logo logo"
+						class="h-8"
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 200 51"
 						preserveAspectRatio="xMinYMid slice"
@@ -59,15 +73,17 @@
 					</svg>
 				</a>
 				<a href="contact.html">
-					<p>| Help Center</p>
+					<p class="text-2xl mb-1 hover:underline">| Help Center</p>
 				</a>
 			</nav>
-			<nav class="nav-end">
+			<nav class="flex gap-[10px] items-center">
 				<a href="support.html">
-					<button class="btn">Submit a request</button>
+					<button class="py-2 px-3 border border-white rounded bg-inherit">
+						Submit a request
+					</button>
 				</a>
 				<a href="sign-in.html">
-					<button class="btn btn-purple">Sign in</button>
+					<button class="py-2 px-3 rounded bg-[#4c5fd5]">Sign in</button>
 				</a>
 			</nav>
 		</header>

@@ -7,6 +7,10 @@ body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* .bg-black {
+	background-color: black;
+} */
+
 header {
 	background-color: black;
 	color: white;
@@ -110,6 +114,7 @@ footer {
 	gap: 2rem;
 	padding: 2rem;
 	min-height: 33vh;
+
 	h3 {
 		font-size: 1.5rem;
 	}
