@@ -1,0 +1,23 @@
+import { useState } from 'react';
+import './index.css';
+import Counter from './components/Counter';
+
+const App = () => {
+	const [count1, setCount1] = useState(0);
+	const [count2, setCount2] = useState(0);
+	const [count3, setCount3] = useState(0);
+	return (
+		<div>
+			<Counter
+				count={count1}
+				setCount={setCount1}
+				onIncrement={() => setCount1((prev) => prev + 1)}
+				onDecrement={() => setCount1((prev) => prev - 1)}
+			/>
+			<Counter count={count2} setCount={setCount2} />
+			<Counter count={count3} setCount={setCount3} />
+		</div>
+	);
+};
+
+export default App;
