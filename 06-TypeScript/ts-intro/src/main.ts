@@ -87,15 +87,15 @@ let person: [string, number, string] = ["Bob", 30, ""];
 // type ID = string | number;
 
 // ------- Interfaces -------
-interface User {
-  name: string;
-  age: number;
-}
+// interface User {
+//   name: string;
+//   age: number;
+// }
 
-let user: User = {
-  name: "Bob",
-  age: 30,
-};
+// let user: User = {
+//   name: "Bob",
+//   age: 30,
+// };
 
 // Which one do I use? Interface or Type Alias
 // - interface can be extended.
@@ -143,7 +143,7 @@ id = "abcd123";
 id = 90;
 // id = true
 
-type Status = "active" | "inactive" | "pending";
+// type Status = "active" | "inactive" | "pending";
 
 let userStatus: Status = "active";
 
@@ -193,7 +193,112 @@ enum Role {
 
 let myRole: Role = Role.Admin;
 
-console.log(myRole);
+// console.log(myRole);
 
 type Role2 = "ADMIN" | "USER" | "GUEST";
 let myRole2: Role2 = "ADMIN";
+
+// ------- Generics -------
+
+// function firstElement(arr: any[]): any {
+//   return arr[0];
+// }
+
+function firstElement<T>(arr: T[]): T {
+  return arr[0];
+}
+
+// const a = firstElement<number>([1, 2]);
+// console.log(a);
+
+// const b = firstElement<string>(["a", "b", "c"]);
+// console.log(b);
+
+// const c = firstElement<boolean>([true, false]);
+// console.log(c);
+
+function makePair<T, U>(first: T, second: U): [T, U] {
+  return [first, second];
+}
+
+const pair = makePair<string, number>("age", 30);
+// console.log(pair);
+
+function logLength<T extends { length: number }>(value: T) {
+  console.log(value.length);
+}
+
+// logLength([1, 2, 4]);
+// logLength("hello")
+
+type Box<T> = {
+  value: T;
+};
+
+const numbersBox: Box<number> = { value: 50 };
+const numbersBox1: Box<string> = { value: "Hello" };
+
+interface ApiResponse<T> {
+  status: number;
+  message: string;
+  data: T;
+}
+
+// interface User {
+//   name: string;
+//   age: number;
+// }
+
+interface Product {
+  name: string;
+  price: number;
+  availability: boolean;
+}
+
+const userResponse: ApiResponse<User> = {
+  status: 200,
+  message: "OK",
+  data: { name: "Bob", age: 30 },
+};
+
+const productsResponse: ApiResponse<Product> = {
+  status: 200,
+  message: "OK",
+  data: { name: "Phone", price: 1000, availability: true },
+};
+
+// ------- Built=in utility types -------
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  age: number;
+}
+
+type UserPreview = Pick<User, "id" | "name" | "age">;
+
+const preview: UserPreview = { id: 1, name: "Bob", age: 10 };
+
+type NewUser = Omit<User, "id">;
+const newUser: NewUser = {
+  name: "Bob",
+  email: "bob@bobby.com",
+  age: 30,
+};
+
+type UserRoles = Record<string, string>;
+
+const roles: UserRoles = {
+  Bob: "admin",
+  Steve: "user",
+  Jane: "viewer",
+};
+
+type Status = "active" | "inactive" | "pending";
+type StatusLabels = Record<Status, string>;
+
+const labels: StatusLabels = {
+  active: "Currently active",
+  inactive: "No longer active",
+  pending: "Awaiting approval",
+};
