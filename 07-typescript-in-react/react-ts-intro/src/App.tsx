@@ -3,7 +3,8 @@ import "./App.css";
 import Greeting from "./components/Greeting";
 import Button from "./components/Button";
 import Card from "./components/Card";
-import { useEffect } from "react";
+import { useState } from "react";
+import NameField from "./components/NameField";
 
 function App() {
   type User = {
@@ -18,7 +19,8 @@ function App() {
       <Greeting name="Bob" age={30} />
       {/* <Greeting name={40} /> This will say Error: number is not assignable */}
       {/* <DeleteButton label="Delete" onDelete={() => console.log("Deleted")} /> */}
-      <Button label="Click me" variant="danger" />
+      {/* <Button label="Click me" variant="danger" /> */}
+      <NameField />
       <Card>
         <h3>Title</h3>
         <p>Some description in here</p>
